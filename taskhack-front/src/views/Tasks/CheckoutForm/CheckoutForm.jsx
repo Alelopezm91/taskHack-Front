@@ -6,7 +6,7 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
-import { payment, getUserDetail } from "../../../services/UsersService";
+import { payment, getUserDetail } from "../../../services/UserService";
 import { useParams, useNavigate } from "react-router-dom";
 import "./CheckoutForm.css";
 

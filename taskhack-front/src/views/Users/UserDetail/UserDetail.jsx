@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { getUserDetail } from "../../../services/UsersService";
+import { getUserDetail } from "../../../services/UserService";
 import { Link, useParams } from "react-router-dom";
 import { useAuthContext } from "../../../contexts/AuthContext";
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getTask } from "../../../services/PostService";
+import { getTask } from "../../../services/TaskService";
 
 const TaskDetail = () => {
   const [task, setTask] = useState({});

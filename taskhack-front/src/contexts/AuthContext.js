@@ -1,18 +1,6 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  useCallback,
-  useRef,
-} from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { createContext, useState, useContext, useEffect } from "react";
+import { setToken, getAccessToken, logout } from "../store/AcessTokenStore";
 import { getCurrentUser } from "../services/UserService";
-import {
-  getAccessToken,
-  logout,
-  setAccessToken,
-} from "../store/AcessTokenStore";
 import { isValidJwt } from "../utils/jwt";
 
 const AuthContext = createContext();
@@ -20,58 +8,42 @@ const AuthContext = createContext();
 export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthContextProvider = ({ children }) => {
-  const navigate = useNavigate();
-  let location = useLocation();
-  const fetchedRef = useRef(false);
-
-  let from = location.state?.from?.pathname || "/profile";
-
   const [user, setUser] = useState();
-  const [authenticationChecked, setAuthenticationChecked] = useState(false);
+  const [isAuthenticationFetched, setIsAuthenticationFetched] = useState(false);
 
-  const login = (token) => {
-    setAccessToken(token);
+  const login = (token, navigateCb) => {
+    setToken(token);
 
-    getUser(true);
+    getUser(navigateCb);
   };
 
-  const getUser = useCallback(
-    (isLogin) => {
-      getCurrentUser().then((userFromAPI) => {
-        setUser(userFromAPI);
+  const getUser = (cb) => {
+    getCurrentUser().then((user) => {
+      setUser(user);
+      setIsAuthenticationFetched(true);
 
-        setAuthenticationChecked(true);
-
-        if (isLogin) {
-          navigate(from, { replace: true });
-        }
-      });
-    },
-    [navigate, from]
-  );
+      cb && cb();
+    });
+  };
 
   useEffect(() => {
-    if (!fetchedRef.current) {
-      console.log("sdjhlasdh");
-      // token?
-      if (getAccessToken()) {
-        console.log(getAccessToken());
-        if (isValidJwt(getAccessToken())) {
-          getUser();
-        } else {
-          logout();
-        }
+    // Si existe token, me traigo al usuario
+    if (getAccessToken()) {
+      if (!isValidJwt(getAccessToken())) {
+        logout();
       } else {
-        setAuthenticationChecked(true);
+        getUser();
       }
-      fetchedRef.current = true;
+    } else {
+      setIsAuthenticationFetched(true);
     }
-  }, [getUser]);
+  }, []);
 
   const value = {
     user,
+    isAuthenticationFetched,
     login,
-    authenticationChecked,
+    getUser,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

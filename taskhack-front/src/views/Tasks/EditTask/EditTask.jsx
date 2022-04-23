@@ -4,8 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useForm, FormProvider } from "react-hook-form";
 import { getTask, updateTask } from "../../../services/TaskService";
 import { useAuthContext } from "../../../contexts/AuthContext";
-import HtmlEditorComponent from "../NewPost/HtmlEditorComponent";
-import InputGroup from "../../../components/InputGroup";
+import HtmlEditorComponent from "../NewTask/HtmlEditorComponent";
+import InputGroup from "../../../components/InputGroup/InputGroup";
 
 const EditTask = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
