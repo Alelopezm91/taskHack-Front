@@ -8,6 +8,11 @@ import Home from "./views/Home/Home";
 import { useAuthContext } from "./contexts/AuthContext";
 import Favourites from "./views/Favourites/Favourites";
 import NewTask from "./views/Tasks/NewTask/NewTask";
+import EditTask from "./views/Tasks/EditTask/EditTask";
+import TaskDetail from "./views/Tasks/TaskDetail/TaskDetail";
+import CheckoutForm from "./views/Tasks/CheckoutForm/CheckoutForm";
+import UserDetail from "./views/Users/UserDetail/UserDetail";
+import Hired from "./views/Hired/Hired";
 
 function App() {
   const { authenticationChecked } = useAuthContext();
@@ -26,7 +31,12 @@ function App() {
             <Route path="/" element={<ProtectedRoute />}>
               <Route path="profile" element={<Profile />} />
               <Route path="favourites" element={<Favourites />} />
-              <Route path="post/new" element={<NewTask/>}/>
+              <Route path="task/new" element={<NewTask/>}/>
+              <Route path="hired" element={<Hired/>}/>
+              <Route path="users/:id" element={<UserDetail/>}/>
+              <Route path="task/:id/edit" element={<EditTask/>}/>
+              <Route path="task/:id" element={<TaskDetail/>}/>
+              <Route path="hire/:userId" element={<CheckoutForm/>}/>
             </Route>
           </Routes>
         ) : (

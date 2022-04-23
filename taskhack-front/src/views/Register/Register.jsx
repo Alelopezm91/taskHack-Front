@@ -33,7 +33,19 @@ const Register = () => {
     setBackErrors({});
     setIsSubmitting(true);
 
-    registerRequest(data)
+    const bodyFormData = new FormData();
+
+    const { image, ...rest } = data;
+
+    Object.keys(rest).forEach((key) => {
+      bodyFormData.append(key, rest[key]);
+    });
+
+    if (image[0]) {
+      bodyFormData.append("image", image[0]);
+    }
+
+    registerRequest(bodyFormData)
       .then((user) => {
         navigate("/login");
       })
@@ -90,6 +102,13 @@ const Register = () => {
           register={register}
           error={backErrors?.postalCode || errors.postalCode?.message}
           type="postalCode"
+        />
+        <InputGroup
+          label="User image"
+          id="image"
+          register={register}
+          error={backErrors?.image || errors.image?.message}
+          type="file"
         />
         <button className={`btn btn-${isSubmitting ? "secondary" : "primary"}`}>
           {isSubmitting ? "Creating user..." : "Submit"}

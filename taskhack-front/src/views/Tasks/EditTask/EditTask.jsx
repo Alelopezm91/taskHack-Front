@@ -1,19 +1,28 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm, FormProvider } from "react-hook-form";
-import HtmlEditorComponent from "./HtmlEditorComponent";
-import { createTask } from "../../../services/TaskService";
+import { getTask, updateTask } from "../../../services/TaskService";
 import { useAuthContext } from "../../../contexts/AuthContext";
-import InputGroup from "../../../components/InputGroup/InputGroup";
+import HtmlEditorComponent from "../NewPost/HtmlEditorComponent";
+import InputGroup from "../../../components/InputGroup";
 
-const NewTask = () => {
+const EditTask = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [task, setTask] = useState(null);
   const [errors, setErrors] = useState(false);
-  const navigate = useNavigate();
-  const { user, getUser } = useAuthContext();
 
+  const navigate = useNavigate();
+  const { getUser } = useAuthContext();
+  const { id } = useParams();
   const methods = useForm();
+
+  useEffect(() => {
+    getTask(id).then((task) => {
+      setTask(task);
+      methods.reset({ content: task.content, title: task.title });
+    });
+  }, []);
 
   const onSubmit = methods.handleSubmit((data) => {
     const { content, title } = data;
@@ -21,7 +30,7 @@ const NewTask = () => {
     if (!content || !title) {
       setErrors(true);
     } else {
-      createTask({ ...data, user })
+      updateTask(task.id, data)
         .then((task) => {
           getUser();
           navigate("/profile");
@@ -38,13 +47,13 @@ const NewTask = () => {
   return (
     <FormProvider {...methods}>
       <div className="mt-4">
-        <h1 className="mb-4">Create your Task!</h1>
-        {errors && (
-          <div className="alert alert-dark" role="alert">
-            Check all fields!
-          </div>
-        )}
+        <h1 className="mb-4">Edit your task!</h1>
         <form onSubmit={onSubmit}>
+          {errors && (
+            <div className="alert alert-dark" role="alert">
+              You must include some content!
+            </div>
+          )}
           <InputGroup
             label="Título"
             id="title"
@@ -52,6 +61,7 @@ const NewTask = () => {
             type="text"
           />
           <HtmlEditorComponent
+            initialValue={task ? task.content : null}
             name="content"
             onFocusCb={() => setErrors(false)}
           />
@@ -70,4 +80,4 @@ const NewTask = () => {
   );
 };
 
-export default NewTask;
+export default EditTask;
