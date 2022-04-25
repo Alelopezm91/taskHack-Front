@@ -6,7 +6,7 @@ const Hired = () => {
 
   useEffect(() => {
     getUser();
-  }, []);
+  }, [getUser]);
 
   return (
     <div className="Favourites">

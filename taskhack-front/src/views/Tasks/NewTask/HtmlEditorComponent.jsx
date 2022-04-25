@@ -11,7 +11,7 @@ const HtmlEditorComponent = ({ name, initialValue, onFocusCb }) => {
   return (
     <>
       <Editor
-        apiKey={"qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc"}
+        apiKey={"a8d39gp1y9l2o3udd8u3dxx3is838ra0vf7u1c6sdgk4i7wc"}
         {...field}
         initialValue={initialValue}
         onEditorChange={onChange}

@@ -44,10 +44,15 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/favourites">
-                    Subscriptions
+                  <NavLink className="nav-link" to="/tasks">
+                    All Tasks
                   </NavLink>
                 </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/task/new">
+                   Create New Task
+                  </NavLink>
+                  </li>
                 <li className="nav-item">
                   <button className="btn btn-danger" onClick={logout}>
                     Logout

@@ -9,11 +9,11 @@ export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState();
+  //const [tasks, setTasks]=useState();
   const [isAuthenticationFetched, setIsAuthenticationFetched] = useState(false);
 
   const login = (token, navigateCb) => {
     setToken(token);
-
     getUser(navigateCb);
   };
 

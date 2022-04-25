@@ -34,7 +34,7 @@ const Profile = () => {
       <hr />
       <div>
         <ul className="list-group">
-          {user.tasks.map((task, i) => {
+          {user.tasks?.map((task, i) => {
             return (
               <li
                 key={task.id}
