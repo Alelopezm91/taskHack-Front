@@ -1,12 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { logout } from "../../store/AcessTokenStore";
+import "./Navbar.css"
 
 const Navbar = () => {
   const { user } = useAuthContext();
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container-fluid">
+    <nav className="navbar navbar-expand-lg Navbar-color">
+      <div className="container-fluid Navbar-color">
         <NavLink className="navbar-brand" to="/">
           TaskHacks
         </NavLink>
@@ -19,19 +20,24 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             {!user ? (
               <>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/login">
+                  <NavLink className="nav-link Navbar-color" to="/tasks">
+                    Tasks
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link Navbar-color" to="/login">
                     Login
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/register">
+                  <NavLink className="nav-link Navbar-color" to="/register">
                     Register
                   </NavLink>
                 </li>
@@ -39,20 +45,20 @@ const Navbar = () => {
             ) : (
               <>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/profile">
+                  <NavLink className="nav-link Navbar-color" to="/tasks">
+                    Tasks
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link Navbar-color" to="/profile">
                     Profile
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/tasks">
-                    All Tasks
+                  <NavLink className="nav-link Navbar-color" to="/task/new">
+                    Create New Task
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/task/new">
-                   Create New Task
-                  </NavLink>
-                  </li>
                 <li className="nav-item">
                   <button className="btn btn-danger" onClick={logout}>
                     Logout

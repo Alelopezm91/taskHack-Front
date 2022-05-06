@@ -9,10 +9,12 @@ import { register as registerRequest } from "../../services/AuthService";
 const schema = yup
   .object({
     email: yup.string().email().required(),
+    userName: yup.string().required(),
     name: yup.string().required(),
+    lastName: yup.string().required(),
     password: yup.string().min(8).required(),
     city: yup.string().required(),
-    postalCode:yup.number().required(),
+    postalCode: yup.number().required(),
     street: yup.string(),
   })
   .required();
@@ -70,10 +72,22 @@ const Register = () => {
           type="email"
         />
         <InputGroup
+          label="User Name"
+          id="userName"
+          register={register}
+          error={backErrors?.userName || errors.userName?.message}
+        />
+        <InputGroup
           label="Name"
           id="name"
           register={register}
           error={backErrors?.name || errors.name?.message}
+        />
+        <InputGroup
+          label="Last Name"
+          id="lastName"
+          register={register}
+          error={backErrors?.LastName || errors.lastName?.message}
         />
         <InputGroup
           label="Password"

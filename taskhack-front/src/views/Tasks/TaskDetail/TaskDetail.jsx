@@ -8,7 +8,7 @@ const TaskDetail = () => {
 
   useEffect(() => {
     getTask(id).then((task) => setTask(task));
-  }, []);
+  }, [id]);
 
   return (
     <div>
@@ -18,6 +18,7 @@ const TaskDetail = () => {
       >
         {task.title}
       </h1>
+      <div>{task.category}</div>
       <div dangerouslySetInnerHTML={{ __html: task.content }} />
     </div>
   );

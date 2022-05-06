@@ -56,7 +56,7 @@ const NewTask = () => {
             id="category"
             register={methods.register}
             type="select"
-            options={["Jardinería", "Mudanza", "Bricolage"]}
+            options={["Gardening", "Moving", "Mounting", "Cleaning" , "Delivery", "Cooking"]}
           />
           <InputGroup
             label="Ciudad"

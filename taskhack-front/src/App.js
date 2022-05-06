@@ -14,6 +14,8 @@ import CheckoutForm from "./views/Tasks/CheckoutForm/CheckoutForm";
 import UserDetail from "./views/Users/UserDetail/UserDetail";
 import Hired from "./views/Hired/Hired";
 import TasksList from "./views/Tasks/TasksList/TasksList";
+import TasksByCategory from "./views/Tasks/TasksByCategory/TasksByCategory";
+import TasksByCity from "./views/Tasks/TaskByCity/TaskByCity";
 
 function App() {
   const { authenticationFetched } = useAuthContext();
@@ -32,7 +34,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="tasks" element={<TasksList />} />
             <Route path="task/:id" element={<TaskDetail />} />
+            <Route path="tasks/category/:category" element={<TasksByCategory />} />
+            <Route path="tasks/:city" element={<TasksByCity />} />
 
+            
             <Route path="/" element={<ProtectedRoute />}>
               <Route path="profile" element={<Profile />} />
               <Route path="favourites" element={<Favourites />} />

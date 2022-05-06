@@ -22,7 +22,7 @@ const EditTask = () => {
       setTask(task);
       methods.reset({ content: task.content, title: task.title });
     });
-  }, []);
+  }, [id, methods]);
 
   const onSubmit = methods.handleSubmit((data) => {
     const { content, title } = data;
