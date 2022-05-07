@@ -1,8 +1,7 @@
 import { useAuthContext } from "../../contexts/AuthContext";
-import { useEffect } from "react";
 
 const Hired = () => {
-  const { user, getUser } = useAuthContext();
+  const { user } = useAuthContext();
 
   return (
     <div className="Favourites">
