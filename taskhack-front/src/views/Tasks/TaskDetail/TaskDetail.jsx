@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getTask } from "../../../services/PostService";
+import { getTask } from "../../../services/TaskService";
 
 const TaskDetail = () => {
   const [task, setTask] = useState({});
@@ -8,7 +8,7 @@ const TaskDetail = () => {
 
   useEffect(() => {
     getTask(id).then((task) => setTask(task));
-  }, []);
+  }, [id]);
 
   return (
     <div>
@@ -18,6 +18,7 @@ const TaskDetail = () => {
       >
         {task.title}
       </h1>
+      <div>{task.category}</div>
       <div dangerouslySetInnerHTML={{ __html: task.content }} />
     </div>
   );

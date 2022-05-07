@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { getUserDetail } from "../../../services/UsersService";
+import { getUserDetail } from "../../../services/UserService";
 import { Link, useParams } from "react-router-dom";
 import { useAuthContext } from "../../../contexts/AuthContext";
 
@@ -13,25 +13,27 @@ const UserDetail = () => {
   useEffect(() => {
     getUserDetail(id).then((user) => {
       setCurrentUser(user);
-    });
-  }, []);
+    })
+  }, [id])
+
+  console.log(currentUser);
 
   return (
     <div className="Profile">
       <h1 className="my-4 pb-3">
         <b>{currentUser.name}</b>
-        {!user?.hired.some(
-          (sub) => sub.targetUser.id === currentUser.id
+        {!user?.hired?.some(
+          (hire) => hire.targetUser.id === currentUser.id
         ) && (
           <Link
             className="btn btn-small btn-secondary ms-4"
             to={`/hire/${currentUser._id}`}
           >
-            Subscribe
+            Hire!
           </Link>
         )}
       </h1>
-      <h3>Posts</h3>
+      <h3>My Tasks</h3>
       <hr />
       <div>
         <ul className="list-group">

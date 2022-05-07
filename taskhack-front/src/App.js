@@ -13,34 +13,41 @@ import TaskDetail from "./views/Tasks/TaskDetail/TaskDetail";
 import CheckoutForm from "./views/Tasks/CheckoutForm/CheckoutForm";
 import UserDetail from "./views/Users/UserDetail/UserDetail";
 import Hired from "./views/Hired/Hired";
+import TasksList from "./views/Tasks/TasksList/TasksList";
+import TasksByCategory from "./views/Tasks/TasksByCategory/TasksByCategory";
+import TasksByCity from "./views/Tasks/TaskByCity/TaskByCity";
 
 function App() {
-  const { authenticationChecked } = useAuthContext();
+  const { authenticationFetched } = useAuthContext();
 
   return (
     <div className="App">
       <Navbar />
 
       <div className="container">
-        {authenticationChecked ? (
+        {authenticationFetched ? (
+          <p>Loading...</p>
+        ) : (
           <Routes>
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
             <Route path="/" element={<Home />} />
+            <Route path="tasks" element={<TasksList />} />
+            <Route path="task/:id" element={<TaskDetail />} />
+            <Route path="tasks/category/:category" element={<TasksByCategory />} />
+            <Route path="tasks/:city" element={<TasksByCity />} />
 
+            
             <Route path="/" element={<ProtectedRoute />}>
               <Route path="profile" element={<Profile />} />
               <Route path="favourites" element={<Favourites />} />
-              <Route path="task/new" element={<NewTask/>}/>
-              <Route path="hired" element={<Hired/>}/>
-              <Route path="users/:id" element={<UserDetail/>}/>
-              <Route path="task/:id/edit" element={<EditTask/>}/>
-              <Route path="task/:id" element={<TaskDetail/>}/>
-              <Route path="hire/:userId" element={<CheckoutForm/>}/>
+              <Route path="task/new" element={<NewTask />} />
+              <Route path="hired" element={<Hired />} />
+              <Route path="users/:id" element={<UserDetail />} />
+              <Route path="task/:id/edit" element={<EditTask />} />
+              <Route path="hire/:userId" element={<CheckoutForm />} />
             </Route>
           </Routes>
-        ) : (
-          <p>Loading...</p>
         )}
       </div>
     </div>

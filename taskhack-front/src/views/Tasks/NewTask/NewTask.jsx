@@ -16,9 +16,9 @@ const NewTask = () => {
   const methods = useForm();
 
   const onSubmit = methods.handleSubmit((data) => {
-    const { content, title } = data;
+    const { content, title, city, category } = data;
 
-    if (!content || !title) {
+    if (!content || !title || !city || !category) {
       setErrors(true);
     } else {
       createTask({ ...data, user })
@@ -50,6 +50,20 @@ const NewTask = () => {
             id="title"
             register={methods.register}
             type="text"
+          />
+          <InputGroup
+            label="Categoría"
+            id="category"
+            register={methods.register}
+            type="select"
+            options={["Gardening", "Moving", "Mounting", "Cleaning" , "Delivery", "Cooking"]}
+          />
+          <InputGroup
+            label="Ciudad"
+            id="city"
+            register={methods.register}
+            type="select"
+            options={["Madrid", "Barcelona", "Valencia"]}
           />
           <HtmlEditorComponent
             name="content"

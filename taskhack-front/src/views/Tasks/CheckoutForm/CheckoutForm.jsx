@@ -6,7 +6,7 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
-import { payment, getUserDetail } from "../../../services/UsersService";
+import { payment, getUserDetail } from "../../../services/UserService";
 import { useParams, useNavigate } from "react-router-dom";
 import "./CheckoutForm.css";
 
@@ -19,7 +19,7 @@ const StripeForm = () => {
 
   useEffect(() => {
     getUserDetail(userId).then((user) => setUser(user));
-  }, []);
+  }, [userId]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -36,11 +36,11 @@ const StripeForm = () => {
     if (error) {
     } else if (paymentMethod) {
       const { id } = paymentMethod;
-      payment({ amount: 100, subUserId: userId, paymentId: id }).then(
-        (result) => {
-          navigate("/hired");
-        }
-      );
+      payment({ amount: 100, hiredUserId: userId, paymentId: id })
+        .then(result => {
+            navigate("/hired");
+          }
+        );
     }
   };
 

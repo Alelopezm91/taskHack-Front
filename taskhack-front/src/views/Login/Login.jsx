@@ -5,6 +5,7 @@ import InputGroup from "../../components/InputGroup/InputGroup";
 import { useState } from "react";
 import { login as loginRequest } from "../../services/AuthService";
 import { useAuthContext } from "../../contexts/AuthContext";
+import {useLocation, useNavigate} from 'react-router-dom';
 
 const schema = yup
   .object({
@@ -14,6 +15,11 @@ const schema = yup
   .required();
 
 const Login = () => {
+  const navigate=useNavigate()
+  let location= useLocation();
+
+  let from = location.state?.from?.pathname || "/profile";
+
   const { login } = useAuthContext();
 
   const [error, setError] = useState();
@@ -27,12 +33,12 @@ const Login = () => {
   });
 
   const onSubmit = (data) => {
+    setError(undefined);
     setIsSubmitting(true);
-    setError();
 
     loginRequest(data)
       .then((response) => {
-        login(response.access_token);
+        login(response.access_token, () => navigate(from, { replace: true }));
       })
       .catch((err) => {
         setError(err?.response?.data?.message);
