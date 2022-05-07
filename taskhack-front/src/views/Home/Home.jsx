@@ -27,7 +27,7 @@ const Home = () => {
 
   return (
     <div className="container">
-      <div className="banner mb-4">
+      <div className="banner mb-2">
         <img src={HomeBanner} alt="Home Banner pic" />
         <div className="centered">
           <h1>Everyday life made easier!</h1>
@@ -55,7 +55,7 @@ const Home = () => {
       </div>
       <div className="row">
         <h1 className="py-4">
-          <b>Find your proyect!</b>
+          <b>Find your next proyect!</b>
         </h1>
         <hr />
         <div className="col-sm">
