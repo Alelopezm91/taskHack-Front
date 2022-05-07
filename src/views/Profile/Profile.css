@@ -1,3 +1,10 @@
-img{
-    width: 20px;
+.profile-pic img{
+    width: 105px;
+    height:110px;
+    border-radius: 50%;
+    margin-right:15px;
+}
+.user-info{
+    display: flex;
+    flex-direction: row;
 }

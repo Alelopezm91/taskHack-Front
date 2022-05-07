@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg Navbar-color">
       <div className="container-fluid Navbar-color">
-        <NavLink className="navbar-brand" to="/">
+        <NavLink className="text navbar-brand" to="/">
           TaskHacks
         </NavLink>
         <button
@@ -27,25 +27,28 @@ const Navbar = () => {
             {!user ? (
               <>
                 <li className="nav-item">
-                  <NavLink className="nav-link Navbar-color" to="/tasks">
+                  <NavLink className=" text nav-link Navbar-color" to="/tasks">
                     Tasks
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link Navbar-color" to="/login">
+                  <NavLink className=" text nav-link Navbar-color" to="/login">
                     Login
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link Navbar-color" to="/register">
+                <li className="text nav-item">
+                  <NavLink
+                    className=" text nav-link Navbar-color"
+                    to="/register"
+                  >
                     Register
                   </NavLink>
                 </li>
               </>
             ) : (
               <>
-                <li className="nav-item">
-                  <NavLink className="nav-link Navbar-color" to="/tasks">
+                <li className=" text nav-item">
+                  <NavLink className=" text nav-link Navbar-color" to="/tasks">
                     Tasks
                   </NavLink>
                 </li>

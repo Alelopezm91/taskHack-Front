@@ -11,23 +11,27 @@ const Profile = () => {
       getUser();
     });
   };
+  console.log(user);
 
   return (
-    <div className="Profile">
-      <h1 className=" mb-3">
-        <b>Profile</b>
-      </h1>
-        {user?.image ? (
-          <img src={user?.image} alt="" />
-        ) : (
-          <img
-            src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
-            alt="profile pic"
-          />
-        )}
-  
-      <h3>
-        My tasks
+    <div className="Profile mt-4">
+      <div className="user-info">
+        {" "}
+        <div className="profile-pic mb-3 mr-4">
+          {user?.image ? (
+            <img src={user?.image} alt="" />
+          ) : (
+            <img
+              src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+              alt="profile pic"
+            />
+          )}
+        </div>
+        <h1 className="ml-3 mt-4">{user?.name}'s Profile</h1>
+      </div>
+
+      <h3 className="mt-2">
+        My created tasks
         <Link to="/task/new" className="btn btn-light border ms-3">
           <i className="fas fa-plus"></i>
         </Link>

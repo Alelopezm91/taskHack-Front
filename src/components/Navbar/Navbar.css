@@ -13,3 +13,9 @@ button{
     position: fixed;
     z-index: 1;
 }
+
+.text {
+    color: #f1f2f4;
+    text-decoration: none;
+    color: inherit;
+}
