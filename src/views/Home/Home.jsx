@@ -33,26 +33,12 @@ const Home = () => {
           <h1>Everyday life made easier!</h1>
           <div className="about-banner">
             <p>
-              When life gets busy, you don’t have to tackle it alone. Get time
-              back for what you love without breaking the bank.
+              When life gets busy, you don’t have to tackle it alone.
             </p>
-            <ul className="list">
-              <li className="list-item">
-                <i className="fa fa-check" />
-                Choose your Tasker by reviews, skills, and price
-              </li>
-              <li className="list-item">
-                <i className="fa fa-check" />
-                Schedule when it works for you — as early as today
-              </li>
-              <li className="list-item">
-                <i className="fa fa-check" />
-                Chat, pay, tip, and review all through one platform
-              </li>
-            </ul>
           </div>
         </div>
       </div>
+
       <div className="row">
         <h1 className="py-4">
           <b>Find your next proyect!</b>
@@ -217,3 +203,4 @@ const Home = () => {
 };
 
 export default Home;
+
