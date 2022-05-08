@@ -13,7 +13,7 @@ const TaskDetail = () => {
   console.log(task)
 
   return (
-    <div className="mt-4" style={{height:"100vh"}}>
+    <div className="mt-4" style={{height:"85vh"}}>
       <h1
         className="text-primary text-center my-4 mb-4 mt-4"
         style={{ fontSize: "45px", color: "slategrey" }}

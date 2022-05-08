@@ -61,7 +61,7 @@ const Register = () => {
 
   return (
     <div className="Register">
-      <h1 className="mt-3" style={{ height: "100vh" }}>
+      <h1 className="mt-3" style={{ height: "85vh" }}>
         Register
       </h1>
 
