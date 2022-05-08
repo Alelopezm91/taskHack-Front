@@ -21,26 +21,34 @@ const TasksList = () => {
         {tasks.map((task, i) => {
             console.log(task)
           return (
-            <div key={task._id} className="col-4 g-2">
-              <div className="card text-center" key={task._id}>
-                <div className="card-header">
-                  {" "}
-                  <Link to={`/tasks/category/${task.category}`}>
-                    {task.category}
-                  </Link>
-                </div>
-                <div className="card-body">
-                  <h5 className="card-title">{task.title}</h5>
+            <div class="row rowy">
+              <div class="mb-3">
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">{task.title}</h5>
+                    <Link
+                      className="text-reset text-decoration-none"
+                      to={`/tasks/${task.category}`}
+                    >
+                      <h6 className="card-subtitle mb-2 text-muted">
+                        {task.category}
+                      </h6>
+                    </Link>
 
-                  <br />
-                  <Link to={`/tasks/${task.city}`}>{task.city}</Link>
-                  <p className="card-text">{task.posts?.length}</p>
-                  <Link to={`/task/${task._id}`} className="btn btn-primary">
-                    View my Tasks
-                  </Link>
-                </div>
-                <div className="card-footer text-muted">
-                  last update {i + 1} days ago
+                    <div
+                      className="card-text"
+                      dangerouslySetInnerHTML={{ __html: task.content }}
+                    />
+                    <Link
+                      className="text-reset text-decoration-none"
+                      to={`/tasks/${task.city}`}
+                    >
+                      <p className="card-text mb-2 text-muted">{task.city}</p>
+                    </Link>
+                    <a href={`/task/${task.id}`} class="btn btn-secondary">
+                      Go to task
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

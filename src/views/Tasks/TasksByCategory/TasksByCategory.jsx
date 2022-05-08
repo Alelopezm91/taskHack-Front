@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 
 const TasksByCategory = () => {
   const [tasks, setTasks] = useState([]);
-    const { category } = useParams();
+  const { category } = useParams();
 
-     useEffect(() => {
-       getTasksByCategory(category).then((task) => setTasks(task));
-     }, [category]);
+  useEffect(() => {
+    getTasksByCategory(category).then((task) => setTasks(task));
+  }, [category]);
 
   return (
     <div className="container">
@@ -22,20 +22,28 @@ const TasksByCategory = () => {
         {tasks?.map((task, i) => {
           console.log(task);
           return (
-            <div className="card" >
-              <div className="card-body">
-                <h5 className="card-title">{task.title}</h5>
-                <h6 className="card-subtitle mb-2 text-muted">{task.category}</h6>
-                <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="card-link">
-                  Card link
-                </a>
-                <a href="#" class="card-link">
-                  Another link
-                </a>
+            <div class="row rowy">
+              <div class="mb-3">
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">{task.title}</h5>
+                    <Link
+                      className="text-reset text-decoration-none"
+                      to={`/tasks/${task.city}`}
+                    >
+                      <h6 className="card-subtitle mb-2 text-muted">
+                        {task.city}
+                      </h6>
+                    </Link>
+                    <div
+                      className="card-text"
+                       dangerouslySetInnerHTML={{ __html: task.content }}
+                    />
+                    <a href={`/task/${task.id}`} class="btn btn-secondary">
+                      Go to task
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           );

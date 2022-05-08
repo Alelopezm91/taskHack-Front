@@ -16,6 +16,7 @@ import Hired from "./views/Hired/Hired";
 import TasksList from "./views/Tasks/TasksList/TasksList";
 import TasksByCategory from "./views/Tasks/TasksByCategory/TasksByCategory";
 import TasksByCity from "./views/Tasks/TaskByCity/TaskByCity";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const { authenticationFetched } = useAuthContext();
@@ -50,6 +51,7 @@ function App() {
           </Routes>
         )}
       </div>
+      <Footer/>
     </div>
   );
 }

@@ -37,8 +37,8 @@ const NewTask = () => {
 
   return (
     <FormProvider {...methods}>
-      <div className="mt-4">
-        <h1 className="mb-4">Create your Task!</h1>
+      <div className="mt-2">
+        <h1 className="mb-2">Create your Task!</h1>
         {errors && (
           <div className="alert alert-dark" role="alert">
             Check all fields!
@@ -56,7 +56,14 @@ const NewTask = () => {
             id="category"
             register={methods.register}
             type="select"
-            options={["Gardening", "Moving", "Mounting", "Cleaning" , "Delivery", "Cooking"]}
+            options={[
+              "Gardening",
+              "Moving",
+              "Mounting",
+              "Cleaning",
+              "Delivery",
+              "Cooking",
+            ]}
           />
           <InputGroup
             label="Ciudad"
@@ -65,6 +72,15 @@ const NewTask = () => {
             type="select"
             options={["Madrid", "Barcelona", "Valencia"]}
           />
+
+          {/* <InputGroup
+            label="Descripción"
+            id="content"
+            register={methods.register}
+            type="text"
+            style={{ height: "45px"}}
+          /> */}
+
           <HtmlEditorComponent
             name="content"
             onFocusCb={() => setErrors(false)}
