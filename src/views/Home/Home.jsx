@@ -26,15 +26,13 @@ const Home = () => {
   console.log(users);
 
   return (
-    <div className="container">
+    <div className="container" style={{ height: "100vh" }}>
       <div className="banner mb-2">
         <img src={HomeBanner} alt="Home Banner pic" />
         <div className="centered">
           <h1>Everyday life made easier!</h1>
           <div className="about-banner">
-            <p>
-              When life gets busy, you don’t have to tackle it alone.
-            </p>
+            <p>When life gets busy, you don’t have to tackle it alone.</p>
           </div>
         </div>
       </div>

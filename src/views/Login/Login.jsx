@@ -48,7 +48,7 @@ const Login = () => {
       });
   };
   return (
-    <div className="Login">
+    <div className="Login" style={{ height: "100vh" }}>
       <h1 className="mt-3">Login</h1>
 
       <form onSubmit={handleSubmit(onSubmit)}>

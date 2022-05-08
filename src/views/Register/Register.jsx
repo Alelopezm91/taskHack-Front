@@ -61,7 +61,9 @@ const Register = () => {
 
   return (
     <div className="Register">
-      <h1 className="mt-3">Register</h1>
+      <h1 className="mt-3" style={{ height: "100vh" }}>
+        Register
+      </h1>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputGroup
