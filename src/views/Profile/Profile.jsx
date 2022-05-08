@@ -44,7 +44,7 @@ const Profile = () => {
               <li
                 key={task.id}
                 className="list-group-item d-flex justify-content-between align-items-center"
-                style={{ height: "100vh" }}
+              
               >
                 <Link
                   className="text-reset text-decoration-none"

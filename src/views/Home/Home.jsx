@@ -26,7 +26,7 @@ const Home = () => {
   console.log(users);
 
   return (
-    <div className="container" style={{ height: "85vh" }}>
+    <div className="container">
       <div className="banner mb-2">
         <img src={HomeBanner} alt="Home Banner pic" />
         <div className="centered">
